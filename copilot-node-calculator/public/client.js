@@ -33,6 +33,12 @@ function calculate(operand1, operand2, operation) {
         case '/':
             uri += "?operation=divide";
             break;
+        case '^':
+            uri += "?operation=exponential";
+            break;
+        case '√':
+            uri += "?operation=squareRoot";
+            break;
         default:
             setError();
             return;

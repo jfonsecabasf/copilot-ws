@@ -94,7 +94,66 @@ describe('Arithmetic', function () {
     });
 
 // TODO: Challenge #1
- 
+
+    //  add test for substraction
+    describe('Substraction', function () {
+        it('substracts two positive integers', function (done) {
+            request.get('/arithmetic?operation=subtract&operand1=21&operand2=21')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0 });
+                    done();
+                });
+        });
+        it('substracts zero to an integer', function (done) {
+            request.get('/arithmetic?operation=subtract&operand1=42&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 42 });
+                    done();
+                });
+        });
+    })
+
+    // add test for exponential
+    describe('Exponential', function () {
+        it('exponentiates two positive integers', function (done) {
+            request.get('/arithmetic?operation=exponential&operand1=2&operand2=3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 8 });
+                    done();
+                });
+        });
+        it('exponentiates a positive integer with zero', function (done) {
+            request.get('/arithmetic?operation=exponential&operand1=42&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 1 });
+                    done();
+                });
+        });
+        it('exponentiates a positive integer and negative integer', function (done) {
+            request.get('/arithmetic?operation=exponential&operand1=2&operand2=-3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0.125 });
+                    done();
+                });
+        });
+    })
+
+    //add test for square root
+    describe('Square Root', function () {
+        it('square roots a positive integer', function (done) {
+            request.get('/arithmetic?operation=squareRoot&operand1=4&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 2 });
+                    done();
+                });
+        });
+    })
 
     describe('Multiplication', function () {
         it('multiplies two positive integers', function (done) {
